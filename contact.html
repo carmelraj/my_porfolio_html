@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Portfoli</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+        <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/fontawesome.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/js/all.min.js" integrity="sha512-jAu66pqHWWQ564NS+m2Zxe13Yek98R7JWNjQLzW+PQ4i2jsMxBT1nGrQ0gFUIVJ4kPkEFe5gelBWNEDTBqmn/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+    </head>
+<body>
+<header>
+    <nav class="d-flex">
+        <a href="index.html">Carmelraj</a>
+        <ul class="d-flex">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="project.html">My Projects</a></li>
+            <li><a class="active" href="contact.html">Contact Us</a></li>
+        </ul>        
+        <div class="search d-flex d-flex-row">            
+            <input type="text" class="full-width" id="searchTxt" placeholder="Search..." /><button id="searchBtn">Search</button>
+        </div>
+    </nav>
+</header>
+
+<section class="d-flex section contact">
+    <h2 class="center-align">Contact Us</h2>
+    <form id="form">
+        <div class="d-flex d-flex-row justify-content-space-between mar-bottom-40">
+            <div class="d-flex d-flex-column width-45 relative">
+                <label>First Name</label>
+                <input type="text" name="fname" id="fname" />
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small id="small"></small>
+            </div>
+            <div class="d-flex d-flex-column width-45 relative">
+                <label>Last Name</label>
+                <input type="text" name="lname" id="lname" />
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small id="small"></small>
+            </div>
+        </div>
+        <div class="d-flex d-flex-row justify-content-space-between mar-bottom-40">
+            <div class="d-flex d-flex-column width-45 relative">
+                <label>Email</label>        
+                <input type="text" name="email" id="email" />
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small id="small"></small>
+            </div>
+            <div class="d-flex d-flex-column width-45 relative">
+                <label>Phone</label>
+                <input type="text" name="phone" id="phone" />
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small id="small"></small>
+            </div>
+        </div>
+        <div class="d-flex d-flex-column mar-bottom-40">
+            <label>Comments</label>
+            <textarea name="comments" id="comments"></textarea>
+        </div>
+        <button class="btnSubmit">Submit</button>
+    </form>
+</section>
+<footer class="d-flex d-flex-row section relative">    
+        <div class="footerLinks">
+            <h2>Carmelraj</h2>
+        </div>
+        <div class="footerLinks">
+            <address>No.90, Sarathambal Nagar<br />Karumathmpatti, Somanur, Coimbatore</address>
+        </div>
+        <div class="footerLinks">
+            <div class="d-flex d-flex-column">
+                <a href="about.html">About Me</a>
+                <a href="project.html">My Projects</a>
+                <a href="contact.html">Contact Us</a>            
+            </div>
+        </div>
+        <div class="footerLinks">
+            <div class="d-flex d-flex-column">
+                <a target="_blank" href="https://www.facebook.com/">Facebook</a>
+                <a target="_blank" href="https://twitter.com/?lang=en-in">Twitter</a>
+            </div>
+        </div>
+        <a class="top" id="scrollTOp" href="Javascript:void(0)"><i class="fas fa-angle-up"></i></a>  
+</footer>
+<script src="./assets/js/main.js" type="Javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    $(function() {
+    $('.chart').easyPieChart({
+      size: 160,
+      barColor: "#01B891",
+      scaleLength: 0,
+      lineWidth: 15,
+      trackColor: "#525151",
+      lineCap: "circle",
+      animate: 2000,
+    });
+  });
+
+  const form = document.getElementById('form');
+  const fname = document.getElementById('fname');
+  const lname = document.getElementById('lname');
+  const email = document.getElementById('email');
+  const phone = document.getElementById('phone');
+  const comments = document.getElementById('comments');
+  form.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      validate();
+  });
+  function validate(){
+        const getFname = fname.value.trim();
+        const getLname = lname.value.trim();
+        const getEmail = email.value.trim();
+        const getPhone = phone.value.trim();        
+        const getComments = comments.value.trim();
+        if(getFname === ''){
+            setError(fname,'Please enter your first name');
+        }
+        else{
+            setSuccess(fname)
+        }
+
+        if(getLname === ''){
+            setError(lname,'Please enter your last name');
+        }
+        else{
+            setSuccess(lname)
+        }
+
+        if(getEmail === ''){
+            setError(email,'Please enter your email address');
+        }
+        else if(!isEmail(getEmail)){
+            setError(email,'Please enter a valid email address')
+        }
+        else{
+            setSuccess(email)
+        }
+
+        if(getPhone === ''){
+            setError(phone,'Please enter your phone number');
+        }
+        else if(!isPhone(getPhone)){
+            setError(phone,'Please enter a valid phone')
+        }
+        else{
+            setSuccess(phone)
+        }        
+        console.log(getFname,getLname,getEmail,getPhone,getComments);
+
+        const date = new Date().getTime()+500000
+        var userDetails = {
+            'fname':getFname,
+            'lname':getLname,
+            'expiry':new Date(date)
+        }
+        
+        // sore first name and last name in local storage with expiry
+        localStorage.setItem('username',JSON.stringify(userDetails))
+        
+        if(getFname.length > 0 && getLname.length > 0 && getEmail.length > 0 && getPhone.length === 10 ){
+            window.location.href='thankyou.html';
+        }
+  }
+  
+  function setError(input, message){
+    const formControl = input.parentElement;
+    console.log(input);
+    const small = formControl.querySelector('small');
+    formControl.className = 'd-flex d-flex-column width-45 relative error';      
+    small.innerText = message;    
+  }  
+
+  function setSuccess(input){
+    const formControl = input.parentElement;    
+    formControl.className = 'd-flex d-flex-column width-45 relative success';      
+  }
+  function isEmail(email){   
+    return /^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+))$/.test(email)
+  }
+  function isPhone(phone){
+    return /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(phone)
+  }
+</script>
+</body>
+</html>

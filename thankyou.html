@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Portfoli</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+        <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/fontawesome.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/js/all.min.js" integrity="sha512-jAu66pqHWWQ564NS+m2Zxe13Yek98R7JWNjQLzW+PQ4i2jsMxBT1nGrQ0gFUIVJ4kPkEFe5gelBWNEDTBqmn/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+    </head>
+<body>
+<header>
+    <nav class="d-flex">
+        <a href="index.html">Carmelraj</a>
+        <ul class="d-flex">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="project.html">My Projects</a></li>
+            <li><a class="active" href="contact.html">Contact Us</a></li>
+        </ul>        
+        <div class="search d-flex d-flex-row">            
+            <input type="text" class="full-width" id="searchTxt" placeholder="Search..." /><button id="searchBtn">Search</button>
+        </div>
+    </nav>
+</header>
+
+<section class="d-flex section thankyout align-items-center">
+    <h4>Hello <span id="fname"></span> <span id="lname"></span>,</h4>
+    <img src="assets/images/success.png" alt="Thank you for contacting me" />
+    <h2 class="center-align pad0">Thank you for contacting me</h2>
+    
+</section>
+<footer class="d-flex d-flex-row section relative">    
+        <div class="footerLinks">
+            <h2>Carmelraj</h2>
+        </div>
+        <div class="footerLinks">
+            <address>No.90, Sarathambal Nagar<br />Karumathmpatti, Somanur, Coimbatore</address>
+        </div>
+        <div class="footerLinks">
+            <div class="d-flex d-flex-column">
+                <a href="about.html">About Me</a>
+                <a href="project.html">My Projects</a>
+                <a href="contact.html">Contact Us</a>            
+            </div>
+        </div>
+        <div class="footerLinks">
+            <div class="d-flex d-flex-column">
+                <a target="_blank" href="https://www.facebook.com/">Facebook</a>
+                <a target="_blank" href="https://twitter.com/?lang=en-in">Twitter</a>
+            </div>
+        </div>
+        <a class="top" id="scrollTOp" href="Javascript:void(0)"><i class="fas fa-angle-up"></i></a>  
+</footer>
+<script src="./assets/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    $(function() {
+    $('.chart').easyPieChart({
+      size: 160,
+      barColor: "#01B891",
+      scaleLength: 0,
+      lineWidth: 15,
+      trackColor: "#525151",
+      lineCap: "circle",
+      animate: 2000,
+    });
+  });
+
+  var getUer = localStorage.getItem('username');
+  var getName = JSON.parse(getUer);  
+  var fname = document.getElementById('fname');
+  var lname = document.getElementById('lname');
+      fname.innerHTML=getName.fname;
+      lname.innerHTML=getName.lname;    
+  </script>
+</body>
+</html>
